@@ -262,29 +262,22 @@ can be found in the LICENSE file at https://angular.io/license
 -->"><input type="hidden" name="project[files][src/app/app.component.router.spec.ts]" value="// For more examples:
 //   https://github.com/angular/angular/blob/main/packages/router/test/integration.spec.ts
 
-import { waitForAsync, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import {Location} from '@angular/common';
+import {provideLocationMocks, SpyLocation} from '@angular/common/testing';
+import {DebugElement, Type} from '@angular/core';
+import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {provideRouter, Router, RouterLink, RouterModule} from '@angular/router';
 
-import { asyncData } from '../testing';
+import {asyncData, click} from '../testing';
 
-import { RouterTestingModule } from '@angular/router/testing';
-import { SpyLocation } from '@angular/common/testing';
-
-import { Router, RouterLink } from '@angular/router';
-
-import { By } from '@angular/platform-browser';
-import { DebugElement, Type } from '@angular/core';
-import { Location } from '@angular/common';
-
-import { click } from '../testing';
-
-import { routes } from './app-routing.module';
-import { AppModule } from './app.module';
-import { AppComponent } from './app.component';
-import { AboutComponent } from './about/about.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-
-import { HeroService, TestHeroService } from './model/testing/test-hero.service';
-import { TwainService } from './twain/twain.service';
+import {AboutComponent} from './about/about.component';
+import {routes} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {AppModule} from './app.module';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {HeroService, TestHeroService} from './model/testing/test-hero.service';
+import {TwainService} from './twain/twain.service';
 
 let comp: AppComponent;
 let fixture: ComponentFixture<AppComponent>;
@@ -292,15 +285,15 @@ let page: Page;
 let router: Router;
 let location: SpyLocation;
 
-describe('AppComponent &amp; RouterTestingModule', () => {
+describe('AppComponent &amp; router testing', () => {
   beforeEach(waitForAsync(() => {
     TestBed
         .configureTestingModule({
           imports: [
             AppModule,
-            RouterTestingModule.withRoutes(routes),
+            RouterModule.forRoot(routes),
           ],
-          providers: [{provide: HeroService, useClass: TestHeroService}]
+          providers: [{provide: HeroService, useClass: TestHeroService}, provideLocationMocks()]
         })
         .compileComponents();
   }));
@@ -325,7 +318,6 @@ describe('AppComponent &amp; RouterTestingModule', () => {
   it('should navigate to &quot;About&quot; w/ browser location URL change', fakeAsync(() => {
        createComponent();
        location.simulateHashChange('/about');
-       // location.go('/about'); // also works ... except, perhaps, in Stackblitz
        advance();
        expectPathToBe('/about');
        expectElementOf(AboutComponent);
@@ -343,8 +335,8 @@ describe('AppComponent &amp; RouterTestingModule', () => {
 
 ///////////////
 
-import { HeroModule } from './hero/hero.module';  // should be lazy loaded
-import { HeroListComponent } from './hero/hero-list.component';
+import {HeroModule} from './hero/hero.module';  // should be lazy loaded
+import {HeroListComponent} from './hero/hero-list.component';
 
 ///////// Can't get lazy loaded Heroes to work yet
 xdescribe('AppComponent &amp; Lazy Loading (not working yet)', () => {
@@ -353,8 +345,10 @@ xdescribe('AppComponent &amp; Lazy Loading (not working yet)', () => {
         .configureTestingModule({
           imports: [
             AppModule,
-            RouterTestingModule.withRoutes(routes),
           ],
+          providers: [
+            provideRouter(routes),
+          ]
         })
         .compileComponents();
   }));
@@ -431,16 +425,12 @@ class Page {
 }
 
 function expectPathToBe(path: string, expectationFailOutput?: any) {
-  expect(location.path())
-  .withContext(expectationFailOutput || 'location.path()')
-  .toEqual(path);
+  expect(location.path()).withContext(expectationFailOutput || 'location.path()').toEqual(path);
 }
 
 function expectElementOf(type: Type<any>): any {
   const el = fixture.debugElement.query(By.directive(type));
-  expect(el)
-    .withContext(`expected an element for ${type.name}`)
-    .toBeTruthy();
+  expect(el).withContext(`expected an element for ${type.name}`).toBeTruthy();
   return el;
 }
 
@@ -449,13 +439,12 @@ function expectElementOf(type: Type<any>): any {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="project[files][src/app/app.component.spec.ts]" value="import { Component, DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+*/"><input type="hidden" name="project[files][src/app/app.component.spec.ts]" value="import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
+import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {provideRouter, Router, RouterLink} from '@angular/router';
 
-import { RouterLinkDirectiveStub } from '../testing';
-
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 
 @Component({selector: 'app-banner', template: ''})
 class BannerStubComponent {
@@ -476,10 +465,10 @@ describe('AppComponent &amp; TestModule', () => {
   beforeEach(waitForAsync(() => {
     TestBed
         .configureTestingModule({
-          declarations: [
-            AppComponent, RouterLinkDirectiveStub, BannerStubComponent, RouterOutletStubComponent,
-            WelcomeStubComponent
-          ]
+          imports: [RouterLink],
+          providers: [provideRouter([])],
+          declarations:
+              [AppComponent, BannerStubComponent, RouterOutletStubComponent, WelcomeStubComponent]
         })
         .compileComponents()
         .then(() => {
@@ -498,8 +487,9 @@ describe('AppComponent &amp; NO_ERRORS_SCHEMA', () => {
           declarations: [
             AppComponent,
             BannerStubComponent,
-            RouterLinkDirectiveStub
           ],
+          providers: [provideRouter([])],
+          imports: [RouterLink],
           schemas: [NO_ERRORS_SCHEMA]
         })
         .compileComponents()
@@ -512,21 +502,25 @@ describe('AppComponent &amp; NO_ERRORS_SCHEMA', () => {
 });
 
 //////// Testing w/ real root module //////
-// Tricky because we are disabling the router and its configuration
-// Better to use RouterTestingModule
-import { AppModule } from './app.module';
-import { AppRoutingModule } from './app-routing.module';
+import {AppModule} from './app.module';
+import {AppRoutingModule} from './app-routing.module';
 
 describe('AppComponent &amp; AppModule', () => {
   beforeEach(waitForAsync(() => {
     TestBed
-        .configureTestingModule({imports: [AppModule]})
+        .configureTestingModule({
+          imports: [AppModule],
+        })
 
         // Get rid of app's Router configuration otherwise many failures.
         // Doing so removes Router declarations; add the Router stubs
         .overrideModule(AppModule, {
           remove: {imports: [AppRoutingModule]},
-          add: {declarations: [RouterLinkDirectiveStub, RouterOutletStubComponent]}
+          add: {
+            declarations: [RouterOutletStubComponent],
+            imports: [RouterLink],
+            providers: [provideRouter([])],
+          }
         })
 
         .compileComponents()
@@ -541,18 +535,18 @@ describe('AppComponent &amp; AppModule', () => {
 });
 
 function tests() {
-  let routerLinks: RouterLinkDirectiveStub[];
+  let routerLinks: RouterLink[];
   let linkDes: DebugElement[];
 
   beforeEach(() => {
     fixture.detectChanges();  // trigger initial data binding
 
     // find DebugElements with an attached RouterLinkStubDirective
-    linkDes = fixture.debugElement.queryAll(By.directive(RouterLinkDirectiveStub));
+    linkDes = fixture.debugElement.queryAll(By.directive(RouterLink));
 
     // get attached link directive instances
     // using each DebugElement's injector
-    routerLinks = linkDes.map(de => de.injector.get(RouterLinkDirectiveStub));
+    routerLinks = linkDes.map(de => de.injector.get(RouterLink));
   });
 
   it('can instantiate the component', () => {
@@ -560,27 +554,22 @@ function tests() {
   });
 
   it('can get RouterLinks from template', () => {
-    expect(routerLinks.length)
-      .withContext('should have 3 routerLinks')
-      .toBe(3);
-    expect(routerLinks[0].linkParams).toBe('/dashboard');
-    expect(routerLinks[1].linkParams).toBe('/heroes');
-    expect(routerLinks[2].linkParams).toBe('/about');
+    expect(routerLinks.length).withContext('should have 3 routerLinks').toBe(3);
+    expect(routerLinks[0].href).toBe('/dashboard');
+    expect(routerLinks[1].href).toBe('/heroes');
+    expect(routerLinks[2].href).toBe('/about');
   });
 
-  it('can click Heroes link in template', () => {
-    const heroesLinkDe = linkDes[1];    // heroes link DebugElement
-    const heroesLink = routerLinks[1];  // heroes link directive
+  it('can click Heroes link in template', fakeAsync(() => {
+       const heroesLinkDe = linkDes[1];  // heroes link DebugElement
 
-    expect(heroesLink.navigatedTo)
-      .withContext('should not have navigated yet')
-      .toBeNull();
+       TestBed.inject(Router).resetConfig([{path: '**', children: []}]);
+       heroesLinkDe.triggerEventHandler('click', {button: 0});
+       tick();
+       fixture.detectChanges();
 
-    heroesLinkDe.triggerEventHandler('click');
-    fixture.detectChanges();
-
-    expect(heroesLink.navigatedTo).toBe('/heroes');
-  });
+       expect(TestBed.inject(Router).url).toBe('/heroes');
+     }));
 }
 
 
@@ -1397,22 +1386,27 @@ describe('DashboardComponent class only', () => {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="project[files][src/app/dashboard/dashboard.component.spec.ts]" value="import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+*/"><input type="hidden" name="project[files][src/app/dashboard/dashboard.component.spec.ts]" value="import {provideHttpClient} from '@angular/common/http';
+import {HttpTestingController, provideHttpClientTesting} from '@angular/common/http/testing';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {TestBed, waitForAsync} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {NavigationEnd, provideRouter, Router} from '@angular/router';
+import {RouterTestingHarness} from '@angular/router/testing';
+import {firstValueFrom} from 'rxjs';
+import {filter} from 'rxjs/operators';
 
-import { addMatchers, asyncData, click } from '../../testing';
-import { HeroService } from '../model/hero.service';
-import { getTestHeroes } from '../model/testing/test-heroes';
+import {addMatchers, click} from '../../testing';
+import {HeroService} from '../model/hero.service';
+import {getTestHeroes} from '../model/testing/test-heroes';
 
-import { By } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-
-import { DashboardComponent } from './dashboard.component';
-import { DashboardModule } from './dashboard.module';
+import {DashboardComponent} from './dashboard.component';
+import {DashboardModule} from './dashboard.module';
 
 beforeEach(addMatchers);
 
 let comp: DashboardComponent;
-let fixture: ComponentFixture<DashboardComponent>;
+let harness: RouterTestingHarness;
 
 ////////  Deep  ////////////////
 
@@ -1427,14 +1421,14 @@ describe('DashboardComponent (deep)', () => {
 
   function clickForDeep() {
     // get first <div class=&quot;hero&quot;>
-    const heroEl: HTMLElement = fixture.nativeElement.querySelector('.hero');
+    const heroEl: HTMLElement = harness.routeNativeElement!.querySelector('.hero')!;
     click(heroEl);
+    return firstValueFrom(
+        TestBed.inject(Router).events.pipe(filter(e => e instanceof NavigationEnd)));
   }
 });
 
 ////////  Shallow ////////////////
-
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('DashboardComponent (shallow)', () => {
   beforeEach(() => {
@@ -1448,30 +1442,29 @@ describe('DashboardComponent (shallow)', () => {
 
   function clickForShallow() {
     // get first <dashboard-hero> DebugElement
-    const heroDe = fixture.debugElement.query(By.css('dashboard-hero'));
+    const heroDe = harness.routeDebugElement!.query(By.css('dashboard-hero'));
     heroDe.triggerEventHandler('selected', comp.heroes[0]);
+    return Promise.resolve();
   }
 });
 
 /** Add TestBed providers, compile, and create DashboardComponent */
 function compileAndCreate() {
   beforeEach(waitForAsync(() => {
-    const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
-    const heroServiceSpy = jasmine.createSpyObj('HeroService', ['getHeroes']);
-
     TestBed
         .configureTestingModule({
           providers: [
-            {provide: HeroService, useValue: heroServiceSpy}, {provide: Router, useValue: routerSpy}
+            provideRouter([{path: '**', component: DashboardComponent}]),
+            provideHttpClient(),
+            provideHttpClientTesting(),
+            HeroService,
           ]
         })
         .compileComponents()
-        .then(() => {
-          fixture = TestBed.createComponent(DashboardComponent);
-          comp = fixture.componentInstance;
-
-          // getHeroes spy returns observable of test heroes
-          heroServiceSpy.getHeroes.and.returnValue(asyncData(getTestHeroes()));
+        .then(async () => {
+          harness = await RouterTestingHarness.create();
+          comp = await harness.navigateByUrl('/', DashboardComponent);
+          TestBed.inject(HttpTestingController).expectOne('api/heroes').flush(getTestHeroes());
         });
   }));
 }
@@ -1480,60 +1473,37 @@ function compileAndCreate() {
  * The (almost) same tests for both.
  * Only change: the way that the first hero is clicked
  */
-function tests(heroClick: () => void) {
-
-  it('should NOT have heroes before ngOnInit', () => {
-    expect(comp.heroes.length)
-      .withContext('should not have heroes before ngOnInit')
-      .toBe(0);
-  });
-
-  it('should NOT have heroes immediately after ngOnInit', () => {
-    fixture.detectChanges();  // runs initial lifecycle hooks
-
-    expect(comp.heroes.length)
-      .withContext('should not have heroes until service promise resolves')
-      .toBe(0);
-  });
-
+function tests(heroClick: () => Promise<unknown>) {
   describe('after get dashboard heroes', () => {
     let router: Router;
 
-     // Trigger component so it gets heroes and binds to them
+    // Trigger component so it gets heroes and binds to them
     beforeEach(waitForAsync(() => {
-      router = fixture.debugElement.injector.get(Router);
-      fixture.detectChanges(); // runs ngOnInit -> getHeroes
-      fixture.whenStable() // No need for the `lastPromise` hack!
-        .then(() => fixture.detectChanges()); // bind to heroes
+      router = TestBed.inject(Router);
+      harness.detectChanges();  // runs ngOnInit -> getHeroes
     }));
 
     it('should HAVE heroes', () => {
       expect(comp.heroes.length)
-        .withContext('should have heroes after service promise resolves')
-        .toBeGreaterThan(0);
+          .withContext('should have heroes after service promise resolves')
+          .toBeGreaterThan(0);
     });
 
     it('should DISPLAY heroes', () => {
       // Find and examine the displayed heroes
       // Look for them in the DOM by css class
-      const heroes = fixture.nativeElement.querySelectorAll('dashboard-hero');
-      expect(heroes.length)
-        .withContext('should display 4 heroes')
-        .toBe(4);
+      const heroes = harness.routeNativeElement!.querySelectorAll('dashboard-hero');
+      expect(heroes.length).withContext('should display 4 heroes').toBe(4);
     });
 
-    it('should tell ROUTER to navigate when hero clicked', () => {
-      heroClick();  // trigger click on first inner <div class=&quot;hero&quot;>
-
-      // args passed to router.navigateByUrl() spy
-      const spy = router.navigateByUrl as jasmine.Spy;
-      const navArgs = spy.calls.first().args[0];
+    it('should tell navigate when hero clicked', async () => {
+      await heroClick();  // trigger click on first inner <div class=&quot;hero&quot;>
 
       // expecting to navigate to id of the component's first hero
       const id = comp.heroes[0].id;
-      expect(navArgs)
-        .withContext('should nav to HeroDetail for first hero')
-        .toBe('/heroes/' + id);
+      expect(TestBed.inject(Router).url)
+          .withContext('should nav to HeroDetail for first hero')
+          .toEqual(`/heroes/${id}`);
     });
   });
 }
@@ -1543,29 +1513,24 @@ function tests(heroClick: () => void) {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="project[files][src/app/dashboard/dashboard.component.ts]" value="import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+*/"><input type="hidden" name="project[files][src/app/dashboard/dashboard.component.ts]" value="import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { Hero } from '../model/hero';
-import { HeroService } from '../model/hero.service';
+import {Hero} from '../model/hero';
+import {HeroService} from '../model/hero.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: [ './dashboard.component.css' ]
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
   heroes: Hero[] = [];
 
-  constructor(
-    private router: Router,
-    private heroService: HeroService) {
-  }
+  constructor(private router: Router, private heroService: HeroService) {}
 
   ngOnInit() {
-    this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes.slice(1, 5));
+    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes.slice(1, 5));
   }
 
   gotoDetail(hero: Hero) {
@@ -1575,8 +1540,7 @@ export class DashboardComponent implements OnInit {
 
   get title() {
     const cnt = this.heroes.length;
-    return cnt === 0 ? 'No Heroes' :
-      cnt === 1 ? 'Top Hero' :  `Top ${cnt} Heroes`;
+    return cnt === 0 ? 'No Heroes' : cnt === 1 ? 'Top Hero' : `Top ${cnt} Heroes`;
   }
 }
 
@@ -3233,101 +3197,28 @@ can be found in the LICENSE file at https://angular.io/license
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
--->"><input type="hidden" name="project[files][src/app/hero/hero-detail.component.no-testbed.spec.ts]" value="import { Router } from '@angular/router';
+-->"><input type="hidden" name="project[files][src/app/hero/hero-detail.component.spec.ts]" value="import {provideHttpClient} from '@angular/common/http';
+import {HttpTestingController, provideHttpClientTesting} from '@angular/common/http/testing';
+import {fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {provideRouter, Router} from '@angular/router';
+import {RouterTestingHarness} from '@angular/router/testing';
 
-import { asyncData, ActivatedRouteStub } from '../../testing';
+import {asyncData, click} from '../../testing';
+import {Hero} from '../model/hero';
+import {SharedModule} from '../shared/shared.module';
 
-import { HeroDetailComponent } from './hero-detail.component';
-import { HeroDetailService } from './hero-detail.service';
-import { Hero } from '../model/hero';
-
-//////////  Tests  ////////////////////
-
-describe('HeroDetailComponent - no TestBed', () => {
-  let comp: HeroDetailComponent;
-  let expectedHero: Hero;
-  let hds: jasmine.SpyObj<HeroDetailService>;
-  let router: jasmine.SpyObj<Router>;
-
-  beforeEach((done: DoneFn) => {
-    expectedHero = { id: 42, name: 'Bubba' };
-    const activatedRoute = new ActivatedRouteStub({ id: expectedHero.id });
-    router = jasmine.createSpyObj('Router', ['navigate']);
-
-    hds = jasmine.createSpyObj('HeroDetailService', ['getHero', 'saveHero']);
-    hds.getHero.and.returnValue(asyncData(expectedHero));
-    hds.saveHero.and.returnValue(asyncData(expectedHero));
-
-    comp = new HeroDetailComponent(hds, activatedRoute as any, router);
-    comp.ngOnInit();
-
-    // OnInit calls HDS.getHero; wait for it to get the fake hero
-    hds.getHero.calls.first().returnValue.subscribe(() => done());
-  });
-
-  it('should expose the hero retrieved from the service', () => {
-    expect(comp.hero).toBe(expectedHero);
-  });
-
-  it('should navigate when click cancel', () => {
-    comp.cancel();
-    expect(router.navigate.calls.any())
-      .withContext('router.navigate called')
-      .toBe(true);
-  });
-
-  it('should save when click save', () => {
-    comp.save();
-    expect(hds.saveHero.calls.any())
-      .withContext('HeroDetailService.save called')
-      .toBe(true);
-    expect(router.navigate.calls.any())
-      .withContext('router.navigate not called yet')
-      .toBe(false);
-  });
-
-  it('should navigate when click save resolves', (done: DoneFn) => {
-    comp.save();
-    // waits for async save to complete before navigating
-    hds.saveHero.calls.first().returnValue
-    .subscribe(() => {
-      expect(router.navigate.calls.any())
-        .withContext('router.navigate called')
-        .toBe(true);
-      done();
-    });
-  });
-
-});
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="project[files][src/app/hero/hero-detail.component.spec.ts]" value="import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { Router } from '@angular/router';
-
-import {
-  ActivatedRoute, ActivatedRouteStub, asyncData, click
-} from '../../testing';
-
-import { Hero } from '../model/hero';
-import { HeroDetailComponent } from './hero-detail.component';
-import { HeroDetailService } from './hero-detail.service';
-import { HeroModule } from './hero.module';
+import {HeroDetailComponent} from './hero-detail.component';
+import {HeroDetailService} from './hero-detail.service';
+import {HeroListComponent} from './hero-list.component';
+import {HeroModule} from './hero.module';
 
 ////// Testing Vars //////
-let activatedRoute: ActivatedRouteStub;
 let component: HeroDetailComponent;
-let fixture: ComponentFixture<HeroDetailComponent>;
+let harness: RouterTestingHarness;
 let page: Page;
 
 ////// Tests //////
 describe('HeroDetailComponent', () => {
-  beforeEach(() => {
-    activatedRoute = new ActivatedRouteStub();
-  });
   describe('with HeroModule setup', heroModuleSetup);
   describe('when override its provided HeroDetailService', overrideSetup);
   describe('with FormsModule setup', formsModuleSetup);
@@ -3336,9 +3227,10 @@ describe('HeroDetailComponent', () => {
 
 ///////////////////
 
+const testHero = getTestHeroes()[0];
 function overrideSetup() {
   class HeroDetailServiceSpy {
-    testHero: Hero = {id: 42, name: 'Test Hero'};
+    testHero: Hero = {...testHero};
 
     /* emit cloned test hero */
     getHero = jasmine.createSpy('getHero').and.callFake(
@@ -3350,46 +3242,41 @@ function overrideSetup() {
   }
 
 
-  // the `id` value is irrelevant because ignored by service stub
-  beforeEach(() => activatedRoute.setParamMap({id: 99999}));
-
   beforeEach(async () => {
-    const routerSpy = createRouterSpy();
-
     await TestBed
         .configureTestingModule({
           imports: [HeroModule],
           providers: [
-            {provide: ActivatedRoute, useValue: activatedRoute},
-            {provide: Router, useValue: routerSpy},
+            provideRouter([{path: 'heroes/:id', component: HeroDetailComponent}]),
             // HeroDetailService at this level is IRRELEVANT!
             {provide: HeroDetailService, useValue: {}}
           ]
         })
-
-        // Override component's own provider
         .overrideComponent(
             HeroDetailComponent,
             {set: {providers: [{provide: HeroDetailService, useClass: HeroDetailServiceSpy}]}})
-
         .compileComponents();
   });
 
   let hdsSpy: HeroDetailServiceSpy;
 
   beforeEach(async () => {
-    await createComponent();
+    harness = await RouterTestingHarness.create();
+    component = await harness.navigateByUrl(`/heroes/${testHero.id}`, HeroDetailComponent);
+    page = new Page();
     // get the component's injected HeroDetailServiceSpy
-    hdsSpy = fixture.debugElement.injector.get(HeroDetailService) as any;
+    hdsSpy = harness.routeDebugElement!.injector.get(HeroDetailService) as any;
+
+    harness.detectChanges();
   });
 
   it('should have called `getHero`', () => {
     expect(hdsSpy.getHero.calls.count())
-      .withContext('getHero called once')
-      .toBe(1, 'getHero called once');
+        .withContext('getHero called once')
+        .toBe(1, 'getHero called once');
   });
 
-  it(&quot;should display stub hero's name&quot;, () => {
+  it('should display stub hero\'s name', () => {
     expect(page.nameDisplay.textContent).toBe(hdsSpy.testHero.name);
   });
 
@@ -3399,58 +3286,42 @@ function overrideSetup() {
 
        page.nameInput.value = newName;
 
-       page.nameInput.dispatchEvent(new Event('input')); // tell Angular
+       page.nameInput.dispatchEvent(new Event('input'));  // tell Angular
 
-       expect(component.hero.name)
-        .withContext('component hero has new name')
-        .toBe(newName);
+       expect(component.hero.name).withContext('component hero has new name').toBe(newName);
        expect(hdsSpy.testHero.name)
-        .withContext('service hero unchanged before save')
-        .toBe(origName);
+           .withContext('service hero unchanged before save')
+           .toBe(origName);
 
        click(page.saveBtn);
-       expect(hdsSpy.saveHero.calls.count())
-        .withContext('saveHero called once')
-        .toBe(1);
+       expect(hdsSpy.saveHero.calls.count()).withContext('saveHero called once').toBe(1);
 
        tick();  // wait for async save to complete
        expect(hdsSpy.testHero.name)
-        .withContext('service hero has new name after save')
-        .toBe(newName);
-       expect(page.navigateSpy.calls.any())
-        .withContext('router.navigate called')
-        .toBe(true);
-     }));
-
-  it('fixture injected service is not the component injected service',
-     // inject gets the service from the fixture
-     inject([HeroDetailService], (fixtureService: HeroDetailService) => {
-       // use `fixture.debugElement.injector` to get service from component
-       const componentService = fixture.debugElement.injector.get(HeroDetailService);
-
-       expect(fixtureService)
-        .withContext('service injected from fixture')
-        .not.toBe(componentService);
+           .withContext('service hero has new name after save')
+           .toBe(newName);
+       expect(TestBed.inject(Router).url).toEqual('/heroes');
      }));
 }
 
 ////////////////////
-import { getTestHeroes, TestHeroService, HeroService } from '../model/testing/test-hero.service';
+import {getTestHeroes} from '../model/testing/test-hero.service';
 
 const firstHero = getTestHeroes()[0];
 
 function heroModuleSetup() {
   beforeEach(async () => {
-    const routerSpy = createRouterSpy();
-
     await TestBed
         .configureTestingModule({
           imports: [HeroModule],
           //  declarations: [ HeroDetailComponent ], // NO!  DOUBLE DECLARATION
           providers: [
-            {provide: ActivatedRoute, useValue: activatedRoute},
-            {provide: HeroService, useClass: TestHeroService},
-            {provide: Router, useValue: routerSpy},
+            provideRouter([
+              {path: 'heroes/:id', component: HeroDetailComponent},
+              {path: 'heroes', component: HeroListComponent},
+            ]),
+            provideHttpClient(),
+            provideHttpClientTesting(),
           ]
         })
         .compileComponents();
@@ -3461,47 +3332,32 @@ function heroModuleSetup() {
 
     beforeEach(async () => {
       expectedHero = firstHero;
-      activatedRoute.setParamMap({id: expectedHero.id});
-      await createComponent();
+      await createComponent(expectedHero.id);
     });
-
-    it(&quot;should display that hero's name&quot;, () => {
+    it('should display that hero\'s name', () => {
       expect(page.nameDisplay.textContent).toBe(expectedHero.name);
     });
 
     it('should navigate when click cancel', () => {
       click(page.cancelBtn);
-      expect(page.navigateSpy.calls.any())
-        .withContext('router.navigate called')
-        .toBe(true);
+      expect(TestBed.inject(Router).url).toEqual(`/heroes/${expectedHero.id}`);
     });
 
     it('should save when click save but not navigate immediately', () => {
-      // Get service injected into component and spy on its`saveHero` method.
-      // It delegates to fake `HeroService.updateHero` which delivers a safe test result.
-      const hds = fixture.debugElement.injector.get(HeroDetailService);
-      const saveSpy = spyOn(hds, 'saveHero').and.callThrough();
-
       click(page.saveBtn);
-      expect(saveSpy.calls.any())
-        .withContext('HeroDetailService.save called')
-        .toBe(true);
-      expect(page.navigateSpy.calls.any())
-        .withContext('router.navigate not called')
-        .toBe(false);
+      expect(TestBed.inject(HttpTestingController).expectOne({method: 'PUT', url: 'api/heroes'}));
+      expect(TestBed.inject(Router).url).toEqual('/heroes/41');
     });
 
     it('should navigate when click save and save resolves', fakeAsync(() => {
          click(page.saveBtn);
          tick();  // wait for async save to complete
-         expect(page.navigateSpy.calls.any())
-          .withContext('router.navigate called')
-          .toBe(true);
+         expect(TestBed.inject(Router).url).toEqual('/heroes/41');
        }));
 
     it('should convert hero name to Title Case', () => {
       // get the name's input and display elements from the DOM
-      const hostElement: HTMLElement = fixture.nativeElement;
+      const hostElement: HTMLElement = harness.routeNativeElement!;
       const nameInput: HTMLInputElement = hostElement.querySelector('input')!;
       const nameDisplay: HTMLElement = hostElement.querySelector('span')!;
 
@@ -3512,133 +3368,88 @@ function heroModuleSetup() {
       nameInput.dispatchEvent(new Event('input'));
 
       // Tell Angular to update the display binding through the title pipe
-      fixture.detectChanges();
+      harness.detectChanges();
 
       expect(nameDisplay.textContent).toBe('Quick Brown  Fox');
     });
-  });
 
-  describe('when navigate with no hero id', () => {
-    beforeEach(async () => {
-      await createComponent();
-    });
-
-    it('should have hero.id === 0', () => {
-      expect(component.hero.id).toBe(0);
-    });
-
-    it('should display empty hero name', () => {
-      expect(page.nameDisplay.textContent).toBe('');
-    });
   });
 
   describe('when navigate to non-existent hero id', () => {
     beforeEach(async () => {
-      activatedRoute.setParamMap({id: 99999});
-      await createComponent();
+      await createComponent(999);
     });
 
     it('should try to navigate back to hero list', () => {
-      expect(page.gotoListSpy.calls.any())
-        .withContext('comp.gotoList called')
-        .toBe(true);
-      expect(page.navigateSpy.calls.any())
-        .withContext('router.navigate called')
-        .toBe(true);
+      expect(TestBed.inject(Router).url).toEqual('/heroes');
     });
-  });
-
-  // Why we must use `fixture.debugElement.injector` in `Page()`
-  it(&quot;cannot use `inject` to get component's provided HeroDetailService&quot;, () => {
-    let service: HeroDetailService;
-    fixture = TestBed.createComponent(HeroDetailComponent);
-    expect(
-        // Throws because `inject` only has access to TestBed's injector
-        // which is an ancestor of the component's injector
-        inject([HeroDetailService], (hds: HeroDetailService) => service = hds))
-        .toThrowError(/No provider for HeroDetailService/);
-
-    // get `HeroDetailService` with component's own injector
-    service = fixture.debugElement.injector.get(HeroDetailService);
-    expect(service)
-      .withContext('debugElement.injector')
-      .toBeDefined();
   });
 }
 
 /////////////////////
-import { FormsModule } from '@angular/forms';
-import { TitleCasePipe } from '../shared/title-case.pipe';
+import {FormsModule} from '@angular/forms';
+import {TitleCasePipe} from '../shared/title-case.pipe';
 
 function formsModuleSetup() {
   beforeEach(async () => {
-    const routerSpy = createRouterSpy();
-
     await TestBed
         .configureTestingModule({
           imports: [FormsModule],
           declarations: [HeroDetailComponent, TitleCasePipe],
           providers: [
-            {provide: ActivatedRoute, useValue: activatedRoute},
-            {provide: HeroService, useClass: TestHeroService},
-            {provide: Router, useValue: routerSpy},
+            provideHttpClient(),
+            provideHttpClientTesting(),
+            provideRouter([{path: 'heroes/:id', component: HeroDetailComponent}]),
           ]
         })
         .compileComponents();
   });
 
-  it(&quot;should display 1st hero's name&quot;, waitForAsync(() => {
-       const expectedHero = firstHero;
-       activatedRoute.setParamMap({id: expectedHero.id});
-       createComponent().then(() => {
-         expect(page.nameDisplay.textContent).toBe(expectedHero.name);
-       });
-     }));
+  it('should display 1st hero\'s name', async () => {
+    const expectedHero = firstHero;
+    await createComponent(expectedHero.id).then(() => {
+      expect(page.nameDisplay.textContent).toBe(expectedHero.name);
+    });
+  });
 }
 
 ///////////////////////
-import { SharedModule } from '../shared/shared.module';
 
 function sharedModuleSetup() {
   beforeEach(async () => {
-    const routerSpy = createRouterSpy();
-
     await TestBed
         .configureTestingModule({
           imports: [SharedModule],
           declarations: [HeroDetailComponent],
           providers: [
-            {provide: ActivatedRoute, useValue: activatedRoute},
-            {provide: HeroService, useClass: TestHeroService},
-            {provide: Router, useValue: routerSpy},
+            provideRouter([{path: 'heroes/:id', component: HeroDetailComponent}]),
+            provideHttpClient(),
+            provideHttpClientTesting(),
           ]
         })
         .compileComponents();
   });
 
-  it(&quot;should display 1st hero's name&quot;, waitForAsync(() => {
-       const expectedHero = firstHero;
-       activatedRoute.setParamMap({id: expectedHero.id});
-       createComponent().then(() => {
-         expect(page.nameDisplay.textContent).toBe(expectedHero.name);
-       });
-     }));
+  it('should display 1st hero\'s name', async () => {
+    const expectedHero = firstHero;
+    await createComponent(expectedHero.id).then(() => {
+      expect(page.nameDisplay.textContent).toBe(expectedHero.name);
+    });
+  });
 }
 
 /////////// Helpers /////
 
 /** Create the HeroDetailComponent, initialize it, set test variables  */
-function createComponent() {
-  fixture = TestBed.createComponent(HeroDetailComponent);
-  component = fixture.componentInstance;
-  page = new Page(fixture);
+async function createComponent(id: number) {
+  harness = await RouterTestingHarness.create();
+  component = await harness.navigateByUrl(`/heroes/${id}`, HeroDetailComponent);
+  page = new Page();
 
-  // 1st change detection triggers ngOnInit which gets a hero
-  fixture.detectChanges();
-  return fixture.whenStable().then(() => {
-    // 2nd change detection displays the async-fetched hero
-    fixture.detectChanges();
-  });
+  const request = TestBed.inject(HttpTestingController).expectOne(`api/heroes/?id=${id}`);
+  const hero = getTestHeroes().find(h => h.id === Number(id));
+  request.flush(hero ? [hero] : []);
+  harness.detectChanges();
 }
 
 class Page {
@@ -3659,31 +3470,14 @@ class Page {
     return this.query<HTMLInputElement>('input');
   }
 
-  gotoListSpy: jasmine.Spy;
-  navigateSpy: jasmine.Spy;
-
-  constructor(someFixture: ComponentFixture<HeroDetailComponent>) {
-    // get the navigate spy from the injected router spy object
-    const routerSpy = someFixture.debugElement.injector.get(Router) as any;
-    this.navigateSpy = routerSpy.navigate;
-
-    // spy on component's `gotoList()` method
-    const someComponent = someFixture.componentInstance;
-    this.gotoListSpy = spyOn(someComponent, 'gotoList').and.callThrough();
-  }
-
   //// query helpers ////
   private query<T>(selector: string): T {
-    return fixture.nativeElement.querySelector(selector);
+    return harness.routeNativeElement!.querySelector(selector)! as T;
   }
 
   private queryAll<T>(selector: string): T[] {
-    return fixture.nativeElement.querySelectorAll(selector);
+    return harness.routeNativeElement!.querySelectorAll(selector) as any as T[];
   }
-}
-
-function createRouterSpy() {
-  return jasmine.createSpyObj('Router', ['navigate']);
 }
 
 
@@ -3749,25 +3543,24 @@ export class HeroDetailComponent implements OnInit {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="project[files][src/app/hero/hero-detail.service.ts]" value="import { Injectable } from '@angular/core';
+*/"><input type="hidden" name="project[files][src/app/hero/hero-detail.service.ts]" value="import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {Hero} from '../model/hero';
+import {HeroService} from '../model/hero.service';
 
-import { Hero } from '../model/hero';
-import { HeroService } from '../model/hero.service';
-
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class HeroDetailService {
-  constructor(private heroService: HeroService) {  }
+  constructor(private heroService: HeroService) {}
 
   // Returns a clone which caller may modify safely
-  getHero(id: number | string): Observable<Hero | null> {
+  getHero(id: number|string): Observable<Hero|null> {
     if (typeof id === 'string') {
       id = parseInt(id, 10);
     }
     return this.heroService.getHero(id).pipe(
-      map(hero => hero ? Object.assign({}, hero) : null) // clone or null
+        map(hero => hero ? Object.assign({}, hero) : null)  // clone or null
     );
   }
 
@@ -4335,77 +4128,72 @@ describe('HeroesService (with mocks)', () => {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="project[files][src/app/model/hero.service.ts]" value="import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+*/"><input type="hidden" name="project[files][src/app/model/hero.service.ts]" value="import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {catchError, map, tap} from 'rxjs/operators';
 
-import { Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-
-import { Hero } from './hero';
+import {Hero} from './hero';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class HeroService {
-
   readonly heroesUrl = 'api/heroes';  // URL to web api
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   /** GET heroes from the server */
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
-      .pipe(
-        tap(heroes => this.log('fetched heroes')),
-        catchError(this.handleError('getHeroes'))
-      ) as Observable<Hero[]>;
+               .pipe(
+                   tap(heroes => this.log('fetched heroes')),
+                   catchError(this.handleError('getHeroes'))) as Observable<Hero[]>;
   }
 
   /** GET hero by id. Return `undefined` when id not found */
-  getHero<Data>(id: number | string): Observable<Hero> {
+  getHero<Data>(id: number|string): Observable<Hero> {
     if (typeof id === 'string') {
       id = parseInt(id, 10);
     }
     const url = `${this.heroesUrl}/?id=${id}`;
-    return this.http.get<Hero[]>(url)
-      .pipe(
-        map(heroes => heroes[0]), // returns a {0|1} element array
+    return this.http.get<Hero[]>(url).pipe(
+        map(heroes => heroes[0]),  // returns a {0|1} element array
         tap(h => {
           const outcome = h ? 'fetched' : 'did not find';
           this.log(`${outcome} hero id=${id}`);
         }),
-        catchError(this.handleError<Hero>(`getHero id=${id}`))
-      );
+        catchError(this.handleError<Hero>(`getHero id=${id}`)));
   }
 
   //////// Save methods //////////
 
   /** POST: add a new hero to the server */
   addHero(hero: Hero): Observable<Hero> {
-    return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
-      tap((addedHero) => this.log(`added hero w/ id=${addedHero.id}`)),
-      catchError(this.handleError<Hero>('addHero'))
-    );
+    return this.http.post<Hero>(this.heroesUrl, hero, httpOptions)
+        .pipe(
+            tap((addedHero) => this.log(`added hero w/ id=${addedHero.id}`)),
+            catchError(this.handleError<Hero>('addHero')));
   }
   /** DELETE: delete the hero from the server */
-  deleteHero(hero: Hero | number): Observable<Hero> {
+  deleteHero(hero: Hero|number): Observable<Hero> {
     const id = typeof hero === 'number' ? hero : hero.id;
     const url = `${this.heroesUrl}/${id}`;
 
-    return this.http.delete<Hero>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted hero id=${id}`)),
-      catchError(this.handleError<Hero>('deleteHero'))
-    );
+    return this.http.delete<Hero>(url, httpOptions)
+        .pipe(
+            tap(_ => this.log(`deleted hero id=${id}`)),
+            catchError(this.handleError<Hero>('deleteHero')));
   }
 
   /** PUT: update the hero on the server */
   updateHero(hero: Hero): Observable<any> {
-    return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
-      tap(_ => this.log(`updated hero id=${hero.id}`)),
-      catchError(this.handleError<any>('updateHero'))
-    );
+    return this.http.put(this.heroesUrl, hero, httpOptions)
+        .pipe(
+            tap(_ => this.log(`updated hero id=${hero.id}`)),
+            catchError(this.handleError<any>('updateHero')));
   }
   /**
    * Returns a function that handles Http operation failures.
@@ -4415,9 +4203,8 @@ export class HeroService {
    */
   private handleError<T>(operation = 'operation') {
     return (error: HttpErrorResponse): Observable<T> => {
-
       // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      console.error(error);  // log to console instead
 
       // If a native error is caught, do not transform it. We only want to
       // transform response errors that are not wrapped in an `Error`.
@@ -4429,7 +4216,6 @@ export class HeroService {
       // TODO: better job of transforming error for user consumption
       throw new Error(`${operation} failed: ${message}`);
     };
-
   }
 
   private log(message: string) {
@@ -5606,39 +5392,6 @@ export function getTestHeroes(): Hero[] {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="project[files][src/testing/activated-route-stub.ts]" value="// export for convenience.
-export { ActivatedRoute } from '@angular/router';
-
-import { convertToParamMap, ParamMap, Params } from '@angular/router';
-import { ReplaySubject } from 'rxjs';
-
-/**
- * An ActivateRoute test double with a `paramMap` observable.
- * Use the `setParamMap()` method to add the next `paramMap` value.
- */
-export class ActivatedRouteStub {
-  // Use a ReplaySubject to share previous values with subscribers
-  // and pump new values into the `paramMap` observable
-  private subject = new ReplaySubject<ParamMap>();
-
-  constructor(initialParams?: Params) {
-    this.setParamMap(initialParams);
-  }
-
-  /** The mock paramMap observable */
-  readonly paramMap = this.subject.asObservable();
-
-  /** Set the paramMap observable's next value */
-  setParamMap(params: Params = {}) {
-    this.subject.next(convertToParamMap(params));
-  }
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="project[files][src/testing/async-observable-helpers.ts]" value="/*
 * Mock async observables that return asynchronously.
 * The observable either emits once and completes or errors.
@@ -5674,13 +5427,11 @@ export function asyncError<T>(errorObject: any) {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="project[files][src/testing/index.ts]" value="import { DebugElement } from '@angular/core';
-import { tick, ComponentFixture } from '@angular/core/testing';
+*/"><input type="hidden" name="project[files][src/testing/index.ts]" value="import {DebugElement} from '@angular/core';
+import {ComponentFixture, tick} from '@angular/core/testing';
 
 export * from './async-observable-helpers';
-export * from './activated-route-stub';
 export * from './jasmine-matchers';
-export * from './router-link-directive-stub';
 
 ///// Short utilities /////
 
@@ -5693,12 +5444,12 @@ export function advance(f: ComponentFixture<any>): void {
 // See https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button
 /** Button events to pass to `DebugElement.triggerEventHandler` for RouterLink event handler */
 export const ButtonClickEvents = {
-   left:  { button: 0 },
-   right: { button: 2 }
+  left: {button: 0},
+  right: {button: 2}
 };
 
 /** Simulate element click. Defaults to mouse left-button click event. */
-export function click(el: DebugElement | HTMLElement, eventObj: any = ButtonClickEvents.left): void {
+export function click(el: DebugElement|HTMLElement, eventObj: any = ButtonClickEvents.left): void {
   if (el instanceof HTMLElement) {
     el.click();
   } else {
@@ -5767,39 +5518,6 @@ function elementText(n: any): string {
 
   return n.textContent;
 }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="project[files][src/testing/router-link-directive-stub.ts]" value="import { Directive, Input, HostListener } from '@angular/core';
-
-// export for convenience.
-export { RouterLink} from '@angular/router';
-
-@Directive({
-  selector: '[routerLink]'
-})
-export class RouterLinkDirectiveStub {
-  @Input('routerLink') linkParams: any;
-  navigatedTo: any = null;
-
-  @HostListener('click')
-  onClick() {
-    this.navigatedTo = this.linkParams;
-  }
-}
-
-/// Dummy module to satisfy Angular Language service. Never used.
-import { NgModule } from '@angular/core';
-
-@NgModule({
-  declarations: [
-    RouterLinkDirectiveStub
-  ]
-})
-export class RouterStubsModule {}
 
 
 /*
@@ -5926,37 +5644,37 @@ can be found in the LICENSE file at https://angular.io/license
   },
   &quot;private&quot;: true,
   &quot;dependencies&quot;: {
-    &quot;@angular/animations&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/common&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/compiler&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/core&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/forms&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/platform-browser&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/platform-browser-dynamic&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/router&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;angular-in-memory-web-api&quot;: &quot;~0.14.0&quot;,
-    &quot;rxjs&quot;: &quot;~7.5.0&quot;,
+    &quot;@angular/animations&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/common&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/compiler&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/core&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/forms&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/platform-browser&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/platform-browser-dynamic&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/router&quot;: &quot;^16.0.0&quot;,
+    &quot;angular-in-memory-web-api&quot;: &quot;~0.16.0&quot;,
+    &quot;rxjs&quot;: &quot;~7.8.0&quot;,
     &quot;tslib&quot;: &quot;^2.3.0&quot;,
-    &quot;zone.js&quot;: &quot;~0.11.4&quot;
+    &quot;zone.js&quot;: &quot;~0.13.0&quot;
   },
   &quot;devDependencies&quot;: {
-    &quot;@angular-devkit/build-angular&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/cli&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/compiler-cli&quot;: &quot;^15.0.0-rc.1&quot;,
+    &quot;@angular-devkit/build-angular&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/cli&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/compiler-cli&quot;: &quot;^16.0.0&quot;,
     &quot;@types/jasmine&quot;: &quot;~4.3.0&quot;,
     &quot;@types/node&quot;: &quot;^16.11.35&quot;,
     &quot;copyfiles&quot;: &quot;^2.4.1&quot;,
-    &quot;jasmine-core&quot;: &quot;~4.4.0&quot;,
+    &quot;jasmine-core&quot;: &quot;~4.6.0&quot;,
     &quot;jasmine-marbles&quot;: &quot;~0.9.2&quot;,
     &quot;jasmine-spec-reporter&quot;: &quot;~7.0.0&quot;,
     &quot;karma&quot;: &quot;~6.4.0&quot;,
-    &quot;karma-chrome-launcher&quot;: &quot;~3.1.0&quot;,
+    &quot;karma-chrome-launcher&quot;: &quot;~3.2.0&quot;,
     &quot;karma-coverage&quot;: &quot;~2.2.0&quot;,
     &quot;karma-jasmine&quot;: &quot;~5.1.0&quot;,
     &quot;karma-jasmine-html-reporter&quot;: &quot;~2.0.0&quot;,
     &quot;protractor&quot;: &quot;~7.0.0&quot;,
     &quot;ts-node&quot;: &quot;~10.9.0&quot;,
-    &quot;typescript&quot;: &quot;~4.8.0&quot;
+    &quot;typescript&quot;: &quot;~4.9.3&quot;
   }
 }
 "><input type="hidden" name="project[files][tsconfig.app.json]" value="/* To learn more about this file see: https://angular.io/config/tsconfig. */

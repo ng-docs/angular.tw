@@ -118,37 +118,37 @@
   },
   &quot;private&quot;: true,
   &quot;dependencies&quot;: {
-    &quot;@angular/animations&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/common&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/compiler&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/core&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/forms&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/platform-browser&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/platform-browser-dynamic&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/router&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;angular-in-memory-web-api&quot;: &quot;~0.14.0&quot;,
-    &quot;rxjs&quot;: &quot;~7.5.0&quot;,
+    &quot;@angular/animations&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/common&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/compiler&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/core&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/forms&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/platform-browser&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/platform-browser-dynamic&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/router&quot;: &quot;^16.0.0&quot;,
+    &quot;angular-in-memory-web-api&quot;: &quot;~0.16.0&quot;,
+    &quot;rxjs&quot;: &quot;~7.8.0&quot;,
     &quot;tslib&quot;: &quot;^2.3.0&quot;,
-    &quot;zone.js&quot;: &quot;~0.11.4&quot;
+    &quot;zone.js&quot;: &quot;~0.13.0&quot;
   },
   &quot;devDependencies&quot;: {
-    &quot;@angular-devkit/build-angular&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/cli&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/compiler-cli&quot;: &quot;^15.0.0-rc.1&quot;,
+    &quot;@angular-devkit/build-angular&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/cli&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/compiler-cli&quot;: &quot;^16.0.0&quot;,
     &quot;@types/jasmine&quot;: &quot;~4.3.0&quot;,
     &quot;@types/node&quot;: &quot;^16.11.35&quot;,
     &quot;copyfiles&quot;: &quot;^2.4.1&quot;,
-    &quot;jasmine-core&quot;: &quot;~4.4.0&quot;,
+    &quot;jasmine-core&quot;: &quot;~4.6.0&quot;,
     &quot;jasmine-marbles&quot;: &quot;~0.9.2&quot;,
     &quot;jasmine-spec-reporter&quot;: &quot;~7.0.0&quot;,
     &quot;karma&quot;: &quot;~6.4.0&quot;,
-    &quot;karma-chrome-launcher&quot;: &quot;~3.1.0&quot;,
+    &quot;karma-chrome-launcher&quot;: &quot;~3.2.0&quot;,
     &quot;karma-coverage&quot;: &quot;~2.2.0&quot;,
     &quot;karma-jasmine&quot;: &quot;~5.1.0&quot;,
     &quot;karma-jasmine-html-reporter&quot;: &quot;~2.0.0&quot;,
     &quot;protractor&quot;: &quot;~7.0.0&quot;,
     &quot;ts-node&quot;: &quot;~10.9.0&quot;,
-    &quot;typescript&quot;: &quot;~4.8.0&quot;
+    &quot;typescript&quot;: &quot;~4.9.3&quot;
   }
 }
 "><input type="hidden" name="project[files][tsconfig.app.json]" value="/* To learn more about this file see: https://angular.io/config/tsconfig. */
@@ -515,7 +515,7 @@ can be found in the LICENSE file at https://angular.io/license
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
--->"><input type="hidden" name="project[files][src/app/heroes/heroes.component.ts]" value="import { Component, OnInit } from '@angular/core';
+-->"><input type="hidden" name="project[files][src/app/heroes/heroes.component.ts]" value="import { Component } from '@angular/core';
 import { Hero } from '../hero';
 import { HEROES } from '../mock-heroes';
 
@@ -525,15 +525,10 @@ import { HEROES } from '../mock-heroes';
   styleUrls: ['./heroes.component.css']
 })
 
-export class HeroesComponent implements OnInit {
+export class HeroesComponent {
 
   heroes = HEROES;
   selectedHero?: Hero;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;

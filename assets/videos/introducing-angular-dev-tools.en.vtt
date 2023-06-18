@@ -1,0 +1,117 @@
+WEBVTT
+Kind: subtitles
+Language: en
+
+00:00.400 --> 00:00.700
+Hello, everyone.
+
+00:01.500 --> 00:02.500
+My name is Minko Gechev.
+
+00:02.800 --> 00:05.700
+I'm working on Angular at Google Today.
+
+00:06.100 --> 00:08.500
+In this video, I'll want to show you how you can use Angular
+
+00:08.800 --> 00:12.000
+DevTools to preview the structure of your application and
+
+00:12.400 --> 00:13.500
+profile its performance.
+
+00:15.100 --> 00:18.200
+Angular DevTools is the Chrome DevTools extension that you
+
+00:18.300 --> 00:20.100
+can download from the Chrome Webstar.
+
+00:21.000 --> 00:23.000
+You can find a link in the description below.
+
+00:24.200 --> 00:28.300
+When you install Angular DevTools, you can go to extensions and pin it.
+
+00:29.300 --> 00:32.400
+The next step is to open an application running in development
+
+00:32.600 --> 00:37.100
+mode. See how the color of the icon changed to red, indicating
+
+00:37.900 --> 00:39.000
+we can debug the application.
+
+00:40.500 --> 00:44.000
+Now let us open Chrome DevTools and find the Angular tab.
+
+00:45.300 --> 00:45.300
+Here.
+
+00:45.400 --> 00:47.400
+We can preview the componentry of the application.
+
+00:49.100 --> 00:53.200
+Once we select a component, we can find its metadata, properties,
+
+00:54.000 --> 00:57.800
+inputs, and outputs in the right panel, and we can modify
+
+00:58.100 --> 00:59.800
+them directly from the UI.
+
+01:01.200 --> 01:04.300
+Now let us navigate to the profiler tab and start recording
+
+01:04.700 --> 01:05.500
+change detection events.
+
+01:06.500 --> 01:09.100
+We can preview change detection cycles as they occur in real
+
+01:09.300 --> 01:13.600
+time. Each bar in the timeline corresponds to a separate
+
+01:14.200 --> 01:15.100
+change detection cycle.
+
+01:16.500 --> 01:19.300
+We can find how much time we spend in change detection and
+
+01:19.600 --> 01:22.200
+whether the current cycle costs any frame drops.
+
+01:23.300 --> 01:26.700
+We can also preview the estimated frame rates and what triggered
+
+01:27.400 --> 01:28.000
+change detection.
+
+01:29.500 --> 01:32.200
+At the bottom, we can preview the components we spent the
+
+01:32.400 --> 01:32.900
+most time in.
+
+01:34.200 --> 01:37.800
+When we select a bar, we can see further details for the
+
+01:37.900 --> 01:38.700
+particular component.
+
+01:40.100 --> 01:43.500
+To better understand the applications execution, we can switch
+
+01:43.700 --> 01:46.800
+between the default bar chart view or the two alternative
+
+01:47.100 --> 01:50.000
+views Flame graph and Tree map.
+
+01:51.400 --> 01:52.600
+That is all I have for you today.
+
+01:53.500 --> 01:57.900
+Head to Anguorio DevTools to find more advanced Angular DevTools
+
+01:58.000 --> 02:01.300
+features. Thank you very much for watching and happy coding.

@@ -118,37 +118,37 @@
   },
   &quot;private&quot;: true,
   &quot;dependencies&quot;: {
-    &quot;@angular/animations&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/common&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/compiler&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/core&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/forms&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/platform-browser&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/platform-browser-dynamic&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/router&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;angular-in-memory-web-api&quot;: &quot;~0.14.0&quot;,
-    &quot;rxjs&quot;: &quot;~7.5.0&quot;,
+    &quot;@angular/animations&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/common&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/compiler&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/core&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/forms&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/platform-browser&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/platform-browser-dynamic&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/router&quot;: &quot;^16.0.0&quot;,
+    &quot;angular-in-memory-web-api&quot;: &quot;~0.16.0&quot;,
+    &quot;rxjs&quot;: &quot;~7.8.0&quot;,
     &quot;tslib&quot;: &quot;^2.3.0&quot;,
-    &quot;zone.js&quot;: &quot;~0.11.4&quot;
+    &quot;zone.js&quot;: &quot;~0.13.0&quot;
   },
   &quot;devDependencies&quot;: {
-    &quot;@angular-devkit/build-angular&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/cli&quot;: &quot;^15.0.0-rc.1&quot;,
-    &quot;@angular/compiler-cli&quot;: &quot;^15.0.0-rc.1&quot;,
+    &quot;@angular-devkit/build-angular&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/cli&quot;: &quot;^16.0.0&quot;,
+    &quot;@angular/compiler-cli&quot;: &quot;^16.0.0&quot;,
     &quot;@types/jasmine&quot;: &quot;~4.3.0&quot;,
     &quot;@types/node&quot;: &quot;^16.11.35&quot;,
     &quot;copyfiles&quot;: &quot;^2.4.1&quot;,
-    &quot;jasmine-core&quot;: &quot;~4.4.0&quot;,
+    &quot;jasmine-core&quot;: &quot;~4.6.0&quot;,
     &quot;jasmine-marbles&quot;: &quot;~0.9.2&quot;,
     &quot;jasmine-spec-reporter&quot;: &quot;~7.0.0&quot;,
     &quot;karma&quot;: &quot;~6.4.0&quot;,
-    &quot;karma-chrome-launcher&quot;: &quot;~3.1.0&quot;,
+    &quot;karma-chrome-launcher&quot;: &quot;~3.2.0&quot;,
     &quot;karma-coverage&quot;: &quot;~2.2.0&quot;,
     &quot;karma-jasmine&quot;: &quot;~5.1.0&quot;,
     &quot;karma-jasmine-html-reporter&quot;: &quot;~2.0.0&quot;,
     &quot;protractor&quot;: &quot;~7.0.0&quot;,
     &quot;ts-node&quot;: &quot;~10.9.0&quot;,
-    &quot;typescript&quot;: &quot;~4.8.0&quot;
+    &quot;typescript&quot;: &quot;~4.9.3&quot;
   }
 }
 "><input type="hidden" name="project[files][tsconfig.app.json]" value="/* To learn more about this file see: https://angular.io/config/tsconfig. */
@@ -437,6 +437,42 @@ export class AppRoutingModule {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="project[files][src/app/app-routing.module.11.ts]" value="import {NgModule} from '@angular/core';
+import {provideRouter, Routes, withComponentInputBinding} from '@angular/router';
+
+import {authGuard} from './auth/auth.guard';
+import {ComposeMessageComponent} from './compose-message/compose-message.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+
+const appRoutes: Routes = [
+  {path: 'compose', component: ComposeMessageComponent, outlet: 'popup'}, {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    canMatch: [authGuard]
+  },
+  {
+    path: 'crisis-center',
+    loadChildren: () =>
+        import('./crisis-center/crisis-center.module').then(m => m.CrisisCenterModule),
+    data: {preload: true}
+  },
+  {path: '', redirectTo: '/superheroes', pathMatch: 'full'},
+  {path: '**', component: PageNotFoundComponent}
+];
+
+@NgModule({
+  providers: [
+    provideRouter(appRoutes, withComponentInputBinding()),
+  ]
+})
+export class AppRoutingModule {
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="project[files][src/app/app-routing.module.ts]" value="import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -455,7 +491,7 @@ const appRoutes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-    canLoad: [authGuard]
+    canMatch: [authGuard]
   },
   {
     path: 'crisis-center',
@@ -661,7 +697,7 @@ export class SelectivePreloadingStrategyService implements PreloadingStrategy {
   preloadedModules: string[] = [];
 
   preload(route: Route, load: () => Observable<any>): Observable<any> {
-    if (route.data?.['preload'] &amp;&amp; route.path != null) {
+    if (route.canMatch === undefined &amp;&amp; route.data?.['preload'] &amp;&amp; route.path != null) {
       // add the route path to the preloaded module array
       this.preloadedModules.push(route.path);
 
@@ -780,14 +816,12 @@ Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="project[files][src/app/auth/auth.guard.ts]" value="import { inject } from '@angular/core';
 import {
-  CanActivateFn, CanMatchFn, Router,
-  CanActivateChildFn,
+  Router,
   NavigationExtras,
-  CanLoadFn, UrlTree
 } from '@angular/router';
 import { AuthService } from './auth.service';
 
-export const authGuard: CanMatchFn|CanActivateChildFn|CanActivateFn|CanLoadFn = () => {
+export const authGuard = () => {
   const router = inject(Router);
   const authService = inject(AuthService);
 
@@ -903,7 +937,7 @@ can be found in the LICENSE file at https://angular.io/license
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
--->"><input type="hidden" name="project[files][src/app/compose-message/compose-message.component.ts]" value="import { Component, HostBinding } from '@angular/core';
+-->"><input type="hidden" name="project[files][src/app/compose-message/compose-message.component.ts]" value="import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -1252,21 +1286,15 @@ can be found in the LICENSE file at https://angular.io/license
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
--->"><input type="hidden" name="project[files][src/app/page-not-found/page-not-found.component.ts]" value="import { Component, OnInit } from '@angular/core';
+-->"><input type="hidden" name="project[files][src/app/page-not-found/page-not-found.component.ts]" value="import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-page-not-found',
   templateUrl: './page-not-found.component.html',
   styleUrls: ['./page-not-found.component.css']
 })
-export class PageNotFoundComponent implements OnInit {
+export class PageNotFoundComponent {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
 
 
 /*
@@ -1539,7 +1567,7 @@ can be found in the LICENSE file at https://angular.io/license
   templateUrl: './crisis-center.component.html',
   styleUrls: ['./crisis-center.component.css']
 })
-export class CrisisCenterComponent { }
+export class CrisisCenterComponent {}
 
 
 /*
@@ -1681,15 +1709,15 @@ can be found in the LICENSE file at https://angular.io/license
 }
 
 .crises li:hover {
-  left: .1em;
+  left: 0.1em;
 }
 
 .crises a {
   color: black;
   text-decoration: none;
   display: block;
-  background-color: #EEE;
-  margin: .5em 0;
+  background-color: #eee;
+  margin: 0.5em 0;
   border-radius: 4px;
   line-height: 2rem;
 }
@@ -1697,7 +1725,7 @@ can be found in the LICENSE file at https://angular.io/license
 @media (min-width: 600px) {
   .crises a {
     font-size: 1.2rem;
-    padding: .5em 0;
+    padding: 0.5em 0;
     line-height: 1.4rem;
   }
 }
@@ -1705,7 +1733,15 @@ can be found in the LICENSE file at https://angular.io/license
 .crises a:hover {
   color: #2c3a41;
   background-color: #e6e6e6;
-  left: .1em;
+  left: 0.1em;
+}
+
+.crises .selected a {
+  background: #d6e6f7;
+}
+
+.crises .selected a:hover {
+  background-color: #bdd7f5;
 }
 
 .heroes .selected a {
@@ -1717,11 +1753,11 @@ can be found in the LICENSE file at https://angular.io/license
 }
 
 .crises .badge {
-  padding: .5em .6em;
+  padding: 0.5em 0.6em;
   color: white;
-  background-color: #435B60;
+  background-color: #435b60;
   min-width: 16px;
-  margin-right: .8em;
+  margin-right: 0.8em;
   border-radius: 4px 0 0 4px;
 }
 
@@ -1759,7 +1795,7 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./crisis-list.component.css']
 })
 export class CrisisListComponent implements OnInit {
-  crises$!: Observable<Crisis[]>;
+  crises$?: Observable<Crisis[]>;
   selectedId = 0;
 
   constructor(
@@ -1768,7 +1804,7 @@ export class CrisisListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.crises$ = this.route.paramMap.pipe(
+    this.crises$ = this.route.firstChild?.paramMap.pipe(
       switchMap(params => {
         this.selectedId = parseInt(params.get('id')!, 10);
         return this.service.getCrises();
@@ -1810,13 +1846,13 @@ can be found in the LICENSE file at https://angular.io/license
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
--->"><input type="hidden" name="project[files][src/app/heroes/hero-detail/hero-detail.component.ts]" value="import { switchMap } from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
+-->"><input type="hidden" name="project[files][src/app/heroes/hero-detail/hero-detail.component.ts]" value="import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
 
-import { HeroService } from '../hero.service';
-import { Hero } from '../hero';
+import {Hero} from '../hero';
+import {HeroService} from '../hero.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -1826,18 +1862,13 @@ import { Hero } from '../hero';
 export class HeroDetailComponent implements OnInit {
   hero$!: Observable<Hero>;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private service: HeroService
-  ) {}
+  constructor(private route: ActivatedRoute, private router: Router, private service: HeroService) {
+  }
 
 
   ngOnInit() {
     this.hero$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.service.getHero(params.get('id')!))
-    );
+        switchMap((params: ParamMap) => this.service.getHero(params.get('id')!)));
   }
 
   gotoHeroes(hero: Hero) {
@@ -1845,7 +1876,7 @@ export class HeroDetailComponent implements OnInit {
     // Pass along the hero id if available
     // so that the HeroList component can select that hero.
     // Include a junk 'foo' property for fun.
-    this.router.navigate(['/superheroes', { id: heroId, foo: 'foo' }]);
+    this.router.navigate(['/superheroes', {id: heroId, foo: 'foo'}]);
   }
 }
 

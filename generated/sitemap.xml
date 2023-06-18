@@ -13,6 +13,9 @@
     <loc>https://angular.cn/guide/accessibility</loc>
   </url>
   <url>
+    <loc>https://angular.cn/guide/add-an-animation</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/guide/ajs-quick-reference</loc>
   </url>
   <url>
@@ -20,6 +23,18 @@
   </url>
   <url>
     <loc>https://angular.cn/guide/angular-package-format</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/animate-state-style</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/animation-api-summary</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/animation-transition-timing</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/animations-attach-to-html-template</loc>
   </url>
   <url>
     <loc>https://angular.cn/guide/animations</loc>
@@ -109,69 +124,6 @@
     <loc>https://angular.cn/guide/component-styles</loc>
   </url>
   <url>
-    <loc>https://angular.cn/guide/component/component-content-projection-complex</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-content-projection-conditional</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-content-projection-multi-slot</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-content-projection-overview</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-content-projection-single-slot</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-create-cli</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-create-manual</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-example-dynamic-load</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-example-interaction</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-example</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-exchange-data</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-lifecycle-overview</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-overview</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-share-data-overview</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-share-data-to-child</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-share-data-to-parent</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-structure</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-style-overview</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-style-view-encapsulate</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-style</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/component/component-use-overview</loc>
-  </url>
-  <url>
     <loc>https://angular.cn/guide/content-projection</loc>
   </url>
   <url>
@@ -182,9 +134,6 @@
   </url>
   <url>
     <loc>https://angular.cn/guide/creating-libraries</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/custom-elements</loc>
   </url>
   <url>
     <loc>https://angular.cn/guide/dependency-injection-in-action</loc>
@@ -268,7 +217,7 @@
     <loc>https://angular.cn/guide/elements</loc>
   </url>
   <url>
-    <loc>https://angular.cn/guide/entry-components</loc>
+    <loc>https://angular.cn/guide/esbuild</loc>
   </url>
   <url>
     <loc>https://angular.cn/guide/event-binding-concepts</loc>
@@ -304,7 +253,52 @@
     <loc>https://angular.cn/guide/hierarchical-dependency-injection</loc>
   </url>
   <url>
+    <loc>https://angular.cn/guide/http-configure-http-url-parameters</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/http-handle-request-errors</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/http-intercept-requests-and-responses</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/http-interceptor-use-cases</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/http-make-jsonp-request</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/http-optimize-server-interaction</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/http-pass-metadata-to-interceptors</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/http-request-data-from-server</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/http-security-xsrf-protection</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/http-send-data-to-server</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/http-server-communication</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/http-setup-server-communication</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/http-test-requests</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/http-track-show-request-progress</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/guide/http</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/hydration</loc>
   </url>
   <url>
     <loc>https://angular.cn/guide/i18n-common-add-package</loc>
@@ -365,12 +359,6 @@
   </url>
   <url>
     <loc>https://angular.cn/guide/libraries</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/lifecycle-hook/lifecycle-hook-example</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/guide/lifecycle-hook/lifecycle-hook-overview</loc>
   </url>
   <url>
     <loc>https://angular.cn/guide/lifecycle-hooks</loc>
@@ -502,6 +490,9 @@
     <loc>https://angular.cn/guide/rx-library</loc>
   </url>
   <url>
+    <loc>https://angular.cn/guide/rxjs-interop</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/guide/schematics-authoring</loc>
   </url>
   <url>
@@ -538,10 +529,16 @@
     <loc>https://angular.cn/guide/sharing-ngmodules</loc>
   </url>
   <url>
+    <loc>https://angular.cn/guide/signals</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/guide/singleton-services</loc>
   </url>
   <url>
     <loc>https://angular.cn/guide/standalone-components</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/standalone-migration</loc>
   </url>
   <url>
     <loc>https://angular.cn/guide/static-query-migration</loc>
@@ -619,7 +616,13 @@
     <loc>https://angular.cn/guide/typescript-configuration</loc>
   </url>
   <url>
+    <loc>https://angular.cn/guide/understanding-angular-animation</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/guide/understanding-angular-overview</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/understanding-communicating-with-http</loc>
   </url>
   <url>
     <loc>https://angular.cn/guide/understanding-template-expr-overview</loc>
@@ -632,6 +635,9 @@
   </url>
   <url>
     <loc>https://angular.cn/guide/update-to-version-15</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/update-to-version-16</loc>
   </url>
   <url>
     <loc>https://angular.cn/guide/updating-content-github-ui</loc>
@@ -656,6 +662,9 @@
   </url>
   <url>
     <loc>https://angular.cn/guide/using-libraries</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/guide/versions</loc>
   </url>
   <url>
     <loc>https://angular.cn/guide/view-encapsulation</loc>
@@ -688,28 +697,79 @@
     <loc>https://angular.cn/start/start-routing</loc>
   </url>
   <url>
+    <loc>https://angular.cn/tutorial/first-app/first-app-lesson-01</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/first-app/first-app-lesson-02</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/first-app/first-app-lesson-03</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/first-app/first-app-lesson-04</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/first-app/first-app-lesson-05</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/first-app/first-app-lesson-06</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/first-app/first-app-lesson-07</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/first-app/first-app-lesson-08</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/first-app/first-app-lesson-09</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/first-app/first-app-lesson-10</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/first-app/first-app-lesson-11</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/first-app/first-app-lesson-12</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/first-app/first-app-lesson-13</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/first-app/first-app-lesson-14</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/first-app</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/tutorial</loc>
   </url>
   <url>
-    <loc>https://angular.cn/tutorial/toh-pt0</loc>
+    <loc>https://angular.cn/tutorial/tour-of-heroes</loc>
   </url>
   <url>
-    <loc>https://angular.cn/tutorial/toh-pt1</loc>
+    <loc>https://angular.cn/tutorial/tour-of-heroes/toh-pt0</loc>
   </url>
   <url>
-    <loc>https://angular.cn/tutorial/toh-pt2</loc>
+    <loc>https://angular.cn/tutorial/tour-of-heroes/toh-pt1</loc>
   </url>
   <url>
-    <loc>https://angular.cn/tutorial/toh-pt3</loc>
+    <loc>https://angular.cn/tutorial/tour-of-heroes/toh-pt2</loc>
   </url>
   <url>
-    <loc>https://angular.cn/tutorial/toh-pt4</loc>
+    <loc>https://angular.cn/tutorial/tour-of-heroes/toh-pt3</loc>
   </url>
   <url>
-    <loc>https://angular.cn/tutorial/toh-pt5</loc>
+    <loc>https://angular.cn/tutorial/tour-of-heroes/toh-pt4</loc>
   </url>
   <url>
-    <loc>https://angular.cn/tutorial/toh-pt6</loc>
+    <loc>https://angular.cn/tutorial/tour-of-heroes/toh-pt5</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/tour-of-heroes/toh-pt6</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/tutorial/tutorial-template</loc>
   </url>
   <url>
     <loc>https://angular.cn/about</loc>
@@ -730,6 +790,9 @@
     <loc>https://angular.cn/events</loc>
   </url>
   <url>
+    <loc>https://angular.cn/everyone</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/features</loc>
   </url>
   <url>
@@ -739,6 +802,9 @@
     <loc>https://angular.cn/presskit</loc>
   </url>
   <url>
+    <loc>https://angular.cn/quick-start</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/README</loc>
   </url>
   <url>
@@ -746,6 +812,9 @@
   </url>
   <url>
     <loc>https://angular.cn/resources</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/scaling</loc>
   </url>
   <url>
     <loc>https://angular.cn/license</loc>
@@ -826,7 +895,7 @@
     <loc>https://angular.cn/errors/NG0100</loc>
   </url>
   <url>
-    <loc>https://angular.cn/errors/NG01003</loc>
+    <loc>https://angular.cn/errors/NG01101</loc>
   </url>
   <url>
     <loc>https://angular.cn/errors/NG01203</loc>
@@ -841,7 +910,13 @@
     <loc>https://angular.cn/errors/NG0203</loc>
   </url>
   <url>
+    <loc>https://angular.cn/errors/NG0209</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/errors/NG02200</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/errors/NG02800</loc>
   </url>
   <url>
     <loc>https://angular.cn/errors/NG0300</loc>
@@ -853,7 +928,34 @@
     <loc>https://angular.cn/errors/NG0302</loc>
   </url>
   <url>
+    <loc>https://angular.cn/errors/NG0403</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/errors/NG0500</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/errors/NG0501</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/errors/NG0502</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/errors/NG0503</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/errors/NG0504</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/errors/NG0505</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/errors/NG0506</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/errors/NG0910</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/errors/NG0912</loc>
   </url>
   <url>
     <loc>https://angular.cn/errors/NG1001</loc>
@@ -866,6 +968,9 @@
   </url>
   <url>
     <loc>https://angular.cn/errors/NG3003</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/errors/NG5000</loc>
   </url>
   <url>
     <loc>https://angular.cn/errors/NG6100</loc>
@@ -893,6 +998,24 @@
   </url>
   <url>
     <loc>https://angular.cn/extended-diagnostics/NG8102</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/extended-diagnostics/NG8103</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/extended-diagnostics/NG8104</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/extended-diagnostics/NG8105</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/extended-diagnostics/NG8106</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/extended-diagnostics/NG8107</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/extended-diagnostics/NG8108</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/animations</loc>
@@ -1030,9 +1153,6 @@
     <loc>https://angular.cn/api/common/http</loc>
   </url>
   <url>
-    <loc>https://angular.cn/api/common/http/XhrFactory</loc>
-  </url>
-  <url>
     <loc>https://angular.cn/api/common/http/HttpBackend</loc>
   </url>
   <url>
@@ -1054,13 +1174,13 @@
     <loc>https://angular.cn/api/common/http/HTTP_INTERCEPTORS</loc>
   </url>
   <url>
+    <loc>https://angular.cn/api/common/http/HttpHandlerFn</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/api/common/http/HttpInterceptor</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/common/http/HttpInterceptorFn</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/api/common/http/HttpHandlerFn</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/common/http/JsonpClientBackend</loc>
@@ -1099,22 +1219,22 @@
     <loc>https://angular.cn/api/common/http/provideHttpClient</loc>
   </url>
   <url>
-    <loc>https://angular.cn/api/common/http/withJsonpSupport</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/api/common/http/withNoXsrfProtection</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/api/common/http/withXsrfConfiguration</loc>
-  </url>
-  <url>
     <loc>https://angular.cn/api/common/http/withInterceptors</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/common/http/withInterceptorsFromDi</loc>
   </url>
   <url>
+    <loc>https://angular.cn/api/common/http/withJsonpSupport</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/common/http/withNoXsrfProtection</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/api/common/http/withRequestsMadeViaParent</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/common/http/withXsrfConfiguration</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/common/http/HttpRequest</loc>
@@ -1459,6 +1579,9 @@
     <loc>https://angular.cn/api/common/PathLocationStrategy</loc>
   </url>
   <url>
+    <loc>https://angular.cn/api/common/BrowserPlatformLocation</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/api/common/LOCATION_INITIALIZED</loc>
   </url>
   <url>
@@ -1537,16 +1660,25 @@
     <loc>https://angular.cn/api/core/BootstrapOptions</loc>
   </url>
   <url>
+    <loc>https://angular.cn/api/core/NgZoneOptions</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/api/core/PlatformRef</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/core/ApplicationRef</loc>
   </url>
   <url>
+    <loc>https://angular.cn/api/core/provideZoneChangeDetection</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/api/core/createPlatformFactory</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/core/NgProbeToken</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/APP_BOOTSTRAP_LISTENER</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/core/enableProdMode</loc>
@@ -1567,10 +1699,10 @@
     <loc>https://angular.cn/api/core/PLATFORM_ID</loc>
   </url>
   <url>
-    <loc>https://angular.cn/api/core/APP_BOOTSTRAP_LISTENER</loc>
+    <loc>https://angular.cn/api/core/ANIMATION_MODULE_TYPE</loc>
   </url>
   <url>
-    <loc>https://angular.cn/api/core/ANIMATION_MODULE_TYPE</loc>
+    <loc>https://angular.cn/api/core/CSP_NONCE</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/core/APP_INITIALIZER</loc>
@@ -1663,6 +1795,30 @@
     <loc>https://angular.cn/api/core/ComponentMirror</loc>
   </url>
   <url>
+    <loc>https://angular.cn/api/core/isStandalone</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/ApplicationConfig</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/mergeApplicationConfig</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/makeStateKey</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/StateKey</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/TransferState</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/booleanAttribute</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/numberAttribute</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/api/core/Attribute</loc>
   </url>
   <url>
@@ -1688,9 +1844,6 @@
   </url>
   <url>
     <loc>https://angular.cn/api/core/OnInit</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/api/core/ANALYZE_FOR_ENTRY_COMPONENTS</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/core/ContentChild</loc>
@@ -1750,6 +1903,12 @@
     <loc>https://angular.cn/api/core/Version</loc>
   </url>
   <url>
+    <loc>https://angular.cn/api/core/assertInInjectionContext</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/runInInjectionContext</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/api/core/InjectFlags</loc>
   </url>
   <url>
@@ -1807,9 +1966,6 @@
     <loc>https://angular.cn/api/core/INJECTOR</loc>
   </url>
   <url>
-    <loc>https://angular.cn/api/core/ReflectiveInjector</loc>
-  </url>
-  <url>
     <loc>https://angular.cn/api/core/ClassProvider</loc>
   </url>
   <url>
@@ -1862,15 +2018,6 @@
   </url>
   <url>
     <loc>https://angular.cn/api/core/ValueSansProvider</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/api/core/ResolvedReflectiveFactory</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/api/core/ResolvedReflectiveProvider</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/api/core/ReflectiveKey</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/core/InjectionToken</loc>
@@ -1928,6 +2075,9 @@
   </url>
   <url>
     <loc>https://angular.cn/api/core/ComponentFactoryResolver</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/DestroyRef</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/core/ElementRef</loc>
@@ -2017,6 +2167,45 @@
     <loc>https://angular.cn/api/core/platformCore</loc>
   </url>
   <url>
+    <loc>https://angular.cn/api/core/computed</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/CreateComputedOptions</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/CreateSignalOptions</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/isSignal</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/Signal</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/signal</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/untracked</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/ValueEqualityFn</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/WritableSignal</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/CreateEffectOptions</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/effect</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/EffectRef</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/EffectCleanupFn</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/api/core/global</loc>
   </url>
   <url>
@@ -2057,6 +2246,24 @@
   </url>
   <url>
     <loc>https://angular.cn/api/core/global/Listener</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/rxjs-interop</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/rxjs-interop/takeUntilDestroyed</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/rxjs-interop/toObservable</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/rxjs-interop/ToObservableOptions</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/rxjs-interop/toSignal</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/core/rxjs-interop/ToSignalOptions</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/core/testing</loc>
@@ -2383,6 +2590,15 @@
     <loc>https://angular.cn/api/platform-browser</loc>
   </url>
   <url>
+    <loc>https://angular.cn/api/platform-browser/makeStateKey</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/platform-browser/TransferState</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/platform-browser/StateKey</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/api/platform-browser/ApplicationConfig</loc>
   </url>
   <url>
@@ -2416,19 +2632,10 @@
     <loc>https://angular.cn/api/platform-browser/enableDebugTools</loc>
   </url>
   <url>
-    <loc>https://angular.cn/api/platform-browser/BrowserTransferStateModule</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/api/platform-browser/makeStateKey</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/api/platform-browser/StateKey</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/api/platform-browser/TransferState</loc>
-  </url>
-  <url>
     <loc>https://angular.cn/api/platform-browser/By</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/platform-browser/REMOVE_STYLES_ON_COMPONENT_DESTROY</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/platform-browser/EVENT_MANAGER_PLUGINS</loc>
@@ -2471,6 +2678,21 @@
   </url>
   <url>
     <loc>https://angular.cn/api/platform-browser/SafeValue</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/platform-browser/HydrationFeature</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/platform-browser/provideClientHydration</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/platform-browser/HydrationFeatureKind</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/platform-browser/withNoDomReuse</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/platform-browser/withNoHttpTransferCache</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/platform-browser/animations</loc>
@@ -2530,6 +2752,9 @@
     <loc>https://angular.cn/api/platform-server/PlatformState</loc>
   </url>
   <url>
+    <loc>https://angular.cn/api/platform-server/provideServerRendering</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/api/platform-server/platformDynamicServer</loc>
   </url>
   <url>
@@ -2555,9 +2780,6 @@
   </url>
   <url>
     <loc>https://angular.cn/api/platform-server/renderModule</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/api/platform-server/renderModuleFactory</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/platform-server/init</loc>
@@ -2629,6 +2851,12 @@
     <loc>https://angular.cn/api/router/NavigationError</loc>
   </url>
   <url>
+    <loc>https://angular.cn/api/router/NavigationSkipped</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/router/NavigationSkippedCode</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/api/router/NavigationStart</loc>
   </url>
   <url>
@@ -2653,31 +2881,16 @@
     <loc>https://angular.cn/api/router/Scroll</loc>
   </url>
   <url>
-    <loc>https://angular.cn/api/router/CanActivate</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/api/router/CanActivateChild</loc>
-  </url>
-  <url>
     <loc>https://angular.cn/api/router/CanActivateChildFn</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/router/CanActivateFn</loc>
   </url>
   <url>
-    <loc>https://angular.cn/api/router/CanDeactivate</loc>
-  </url>
-  <url>
     <loc>https://angular.cn/api/router/CanDeactivateFn</loc>
   </url>
   <url>
-    <loc>https://angular.cn/api/router/CanLoad</loc>
-  </url>
-  <url>
     <loc>https://angular.cn/api/router/CanLoadFn</loc>
-  </url>
-  <url>
-    <loc>https://angular.cn/api/router/CanMatch</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/router/CanMatchFn</loc>
@@ -2698,10 +2911,10 @@
     <loc>https://angular.cn/api/router/NavigationBehaviorOptions</loc>
   </url>
   <url>
-    <loc>https://angular.cn/api/router/QueryParamsHandling</loc>
+    <loc>https://angular.cn/api/router/OnSameUrlNavigation</loc>
   </url>
   <url>
-    <loc>https://angular.cn/api/router/Resolve</loc>
+    <loc>https://angular.cn/api/router/QueryParamsHandling</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/router/ResolveData</loc>
@@ -2755,6 +2968,9 @@
     <loc>https://angular.cn/api/router/InMemoryScrollingFeature</loc>
   </url>
   <url>
+    <loc>https://angular.cn/api/router/NavigationErrorHandlerFeature</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/api/router/PreloadingFeature</loc>
   </url>
   <url>
@@ -2773,6 +2989,12 @@
     <loc>https://angular.cn/api/router/RouterFeatures</loc>
   </url>
   <url>
+    <loc>https://angular.cn/api/router/RouterHashLocationFeature</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/router/withComponentInputBinding</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/api/router/withDebugTracing</loc>
   </url>
   <url>
@@ -2782,7 +3004,13 @@
     <loc>https://angular.cn/api/router/withEnabledBlockingInitialNavigation</loc>
   </url>
   <url>
+    <loc>https://angular.cn/api/router/withHashLocation</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/api/router/withInMemoryScrolling</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/router/withNavigationErrorHandler</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/router/withPreloading</loc>
@@ -2893,10 +3121,46 @@
     <loc>https://angular.cn/api/router/UrlTree</loc>
   </url>
   <url>
+    <loc>https://angular.cn/api/router/mapToCanActivate</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/router/mapToCanActivateChild</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/router/mapToCanDeactivate</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/router/mapToCanMatch</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/router/mapToResolve</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/router/CanActivate</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/router/CanActivateChild</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/router/CanDeactivate</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/router/CanLoad</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/router/CanMatch</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/router/DeprecatedGuard</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/router/Resolve</loc>
+  </url>
+  <url>
     <loc>https://angular.cn/api/router/testing</loc>
   </url>
   <url>
-    <loc>https://angular.cn/api/router/testing/setupTestingRouterInternal</loc>
+    <loc>https://angular.cn/api/router/testing/RouterTestingHarness</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/router/testing/setupTestingRouter</loc>
@@ -2945,6 +3209,9 @@
   </url>
   <url>
     <loc>https://angular.cn/api/service-worker/ServiceWorkerModule</loc>
+  </url>
+  <url>
+    <loc>https://angular.cn/api/service-worker/provideServiceWorker</loc>
   </url>
   <url>
     <loc>https://angular.cn/api/service-worker/SwRegistrationOptions</loc>

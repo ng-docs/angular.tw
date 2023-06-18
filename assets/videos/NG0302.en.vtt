@@ -1,0 +1,176 @@
+WEBVTT
+Kind: subtitles
+Language: en
+
+00:00:00.640 --> 00:00:05.520
+The pipe name could not be found. You may
+encounter this error when you reference a pipe
+
+00:00:05.520 --> 00:00:10.880
+and a template that has either not been imported,
+or not been named properly. Just like components
+
+00:00:10.880 --> 00:00:16.880
+and directives, pipes must be declared or imported
+in an ngModule. In addition, when referenced in a
+
+00:00:16.880 --> 00:00:22.480
+template, the name must match the name specified
+in the pipe decorator. Angular uses the name in
+
+00:00:22.480 --> 00:00:27.440
+a template to determine which pipe to execute.
+That means every pipe must have a name and the
+
+00:00:27.440 --> 00:00:32.720
+name must be unique to that ngModule. Let's start
+by taking a look at a simple reproduction and
+
+00:00:32.720 --> 00:00:37.680
+solution, then we'll review pipes in greater
+detail to understand why this error occurs
+
+00:00:37.680 --> 00:00:43.120
+in our code base. You'll notice we're referencing
+a pipe with the name of truncate, however the red
+
+00:00:43.120 --> 00:00:48.320
+underline in VSCode is telling us that Angular
+cannot find a pipe with that name. If you don't
+
+00:00:48.320 --> 00:00:53.600
+see the error in VSCode, you might also find it in
+the terminal or in the browser console. In either
+
+00:00:53.600 --> 00:00:58.640
+case, the stack trace will direct you to the
+template file that is causing the issue. In order
+
+00:00:58.640 --> 00:01:04.320
+to fix the issue, we'll first want to verify that
+the pipe is available in the appropriate ngModule.
+
+00:01:04.320 --> 00:01:09.040
+In this case we're attempting to use the pipe
+in the AppModule. Because it's a custom pipe
+
+00:01:09.040 --> 00:01:14.320
+that we're developing in this project, it needs to
+be in the declarations for this Module just like
+
+00:01:14.320 --> 00:01:19.840
+a component or directive. Now in other cases,
+the pipe may be exported by a different Module
+
+00:01:19.840 --> 00:01:24.720
+or exported from a third party package, in
+which case you may need to import that Module
+
+00:01:24.720 --> 00:01:29.440
+as opposed to adding the pipe to the declarations.
+At this point we have verified that the pipe is
+
+00:01:29.440 --> 00:01:34.320
+available in the ngModule but we're still getting
+the error. The next piece of code to check is the
+
+00:01:34.320 --> 00:01:39.760
+pipe definition itself and specifically the name
+option in the pipe decorator. Notice here how
+
+00:01:39.760 --> 00:01:44.560
+the pipe name is 'shorten' but in the template
+it's referenced as 'truncate'. The issue can be
+
+00:01:44.560 --> 00:01:49.280
+resolved by fixing the mismatch. Either change the
+name referenced in the template or change the name
+
+00:01:49.280 --> 00:01:54.560
+parameter in the pipe decorator. That'll fix the
+issue and it brings up a good opportunity to point
+
+00:01:54.560 --> 00:01:58.480
+out a best practice that will prevent issues
+like this from happening in the first place.
+
+00:01:58.480 --> 00:02:02.000
+When you create a pipe in Angular,
+it's conventional for the pipe name
+
+00:02:02.000 --> 00:02:06.800
+to match the file name where it's defined. Notice
+how the pipe name is 'truncate' and the file name
+
+00:02:06.800 --> 00:02:13.680
+is 'truncate.pipe.ts'. When using the Angular CLI,
+this best practice will be applied automatically.
+
+00:02:13.680 --> 00:02:18.480
+Now that we know how to resolve this issue, let's
+do a quick review of how pipes work in Angular to
+
+00:02:18.480 --> 00:02:23.120
+understand why this issue happens in the first
+place. The role of a pipe in Angular is to
+
+00:02:23.120 --> 00:02:27.840
+transform values in the template, and unlike
+regular method calls, Angular can optimize
+
+00:02:27.840 --> 00:02:33.440
+pipes. They're especially useful when you have an
+expression or value like a number that needs to be
+
+00:02:33.440 --> 00:02:39.280
+reformatted as a currency decimal or some other
+format. Angular has a handful of built-in pipes,
+
+00:02:39.280 --> 00:02:43.200
+or you can create your own from scratch.
+When Angular encounters the pipe character
+
+00:02:43.200 --> 00:02:48.320
+in a template expression, it uses the name of the
+pipe to determine which class has the function to
+
+00:02:48.320 --> 00:02:53.760
+execute. If an invalid name is provided, Angular
+has no way to find the corresponding function,
+
+00:02:53.760 --> 00:02:58.720
+but when it is valid it'll match that name
+to the pipe class, which implements a pipe
+
+00:02:58.720 --> 00:03:03.840
+transform function. The transform function takes
+the value provided from the template, along with
+
+00:03:03.840 --> 00:03:09.200
+any additional arguments, then returns a new
+value which is ultimately shown to the end user.
+
+00:03:09.200 --> 00:03:12.960
+Let's go ahead and recap! When you
+encounter the PipeNameNotFoundError,
+
+00:03:12.960 --> 00:03:17.120
+it means a pipe has been referenced in a
+template that has either not been imported
+
+00:03:17.120 --> 00:03:21.360
+or not been named properly. Resolve
+the issue by first verifying that the
+
+00:03:21.360 --> 00:03:26.480
+pipe has been imported or declared in the
+appropriate ngModule. If the issue remains,
+
+00:03:26.480 --> 00:03:31.040
+check the pipe definition itself to verify
+that the name matches the name declared in the
+
+00:03:31.040 --> 00:03:36.240
+template. For additional examples and details,
+reference the official Angular documentation.
+
