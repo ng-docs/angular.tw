@@ -1,12 +1,12 @@
 WEBVTT
 Kind: subtitles
-Language: zh-CN
+Language: zh-TW
 
 00:00.512 --> 00:02.560
 Export of name directive not found
 
 00:02.816 --> 00:11.520
-当你在模板中引用某个未定义过、未导入过的指令，
+当你在模板中引用某个未定义过、未导入过的指令
 或请求某个未声明过的导出名称时可能会遇到本错误
 
 00:11.776 --> 00:14.336

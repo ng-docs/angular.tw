@@ -1,6 +1,6 @@
 WEBVTT
 Kind: subtitles
-Language: zh-CN
+Language: zh-TW
 
 00:00.000 --> 00:02.700
 Multiple components match node with tag name.
@@ -39,7 +39,7 @@ Multiple components match node with tag name.
 注意，当我们悬浮在红色下划线上方时，我们得到了反馈
 
 00:42.100 --> 00:45.100
-说是多于一个组件匹配此元素。
+说是多于一个组件匹配此元素
 
 00:45.200 --> 00:48.500
 另外，它还会告诉我们具体是哪些类发生了冲突
@@ -126,7 +126,7 @@ Multiple components match node with tag name.
 很难共享同一个选择器名
 
 02:18.900 --> 02:20.300
-我们来回顾一下。
+我们来回顾一下
 
 02:20.300 --> 02:23.700
 当你遇到 the multiple components match node with tag name 错误时

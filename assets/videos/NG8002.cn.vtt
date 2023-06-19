@@ -33,7 +33,7 @@ Can't bind to prop name because it isn't a known property of node.
 并且在其右侧提供表达式。当表达式的值发生变化时，被绑定的属性
 
 00:49.040 --> 00:54.640
-及其对应的 UI 都会自动更新。
+及其对应的 UI 都会自动更新
 通常，你会在使用自定义组件时会遇到未知属性的问题
 
 00:54.640 --> 00:59.600
@@ -60,11 +60,11 @@ Can't bind to prop name because it isn't a known property of node.
 换句话说，如果某个属性没有被指定为 @Input，它就不能
 
 01:32.960 --> 01:37.760
-在模板中使用方括号进行数据绑定。
+在模板中使用方括号进行数据绑定
 另请注意，你可以给 @Input 装饰器传入参数
 
 01:37.760 --> 01:42.880
-以改变该属性的名字。
+以改变该属性的名字
 
 01:42.880 --> 01:48.080
 这可以让你能在模板中使用与其组件内部属性名不同的名字
@@ -129,11 +129,11 @@ Can't bind to prop name because it isn't a known property of node.
 在原生 HTML 元素上绑定到不存在的属性时仍然会报错
 
 03:28.000 --> 03:32.800
-我们来回顾一下。
+我们来回顾一下
 当你遇到 'Can't bind to prop name since it isn't a known property of node'
 
 03:32.800 --> 03:37.600
-错误时，你首先要验证一下此属性名对 Angular 是已知的。
+错误时，你首先要验证一下此属性名对 Angular 是已知的
 
 03:37.600 --> 03:43.280
 原生 HTML 元素只应该使用基于现行 HTML 规范的属性
