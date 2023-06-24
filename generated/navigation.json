@@ -925,7 +925,7 @@
           "tooltip": "Prerender HTML server-side with Angular Universal."
         },
         {
-          "titleCn": "Angular 庫",
+          "titleCn": "Angular 函式庫",
           "title": "Angular Libraries",
           "tooltipCn": "使用共享庫擴充 Angular。",
           "tooltip": "Extending Angular with shared libraries.",
@@ -934,7 +934,7 @@
               "url": "guide/libraries",
               "titleCn": "函式庫概覽",
               "title": "Libraries overview",
-              "tooltipCn": "瞭解如何以及何時使用或建立庫。",
+              "tooltipCn": "瞭解如何以及何時使用或建立函式庫。",
               "tooltip": "Understand how and when to use or create libraries."
             },
             {
@@ -946,16 +946,16 @@
             },
             {
               "url": "guide/creating-libraries",
-              "titleCn": "建立庫",
+              "titleCn": "建立函式庫",
               "title": "Creating libraries",
               "tooltipCn": "透過建立、釋出和使用你自己的函式庫來擴充 Angular。",
               "tooltip": "Extend Angular by creating, publishing, and using your own libraries."
             },
             {
               "url": "guide/angular-package-format",
-              "titleCn": "Angular 包格式",
+              "titleCn": "Angular 套件格式",
               "title": "Angular package format",
-              "tooltipCn": "有關 Angular 包格式的資訊。",
+              "tooltipCn": "有關 Angular 套件格式的資訊。",
               "tooltip": "Information about the Angular Package Format."
             }
           ]
@@ -1027,9 +1027,9 @@
         },
         {
           "url": "guide/lightweight-injection-tokens",
-          "titleCn": "為庫準備的輕量級注入令牌",
+          "titleCn": "為函式庫準備的輕量級注入令牌",
           "title": "Lightweight injection tokens for libraries",
-          "tooltipCn": "透過使用輕量級注入令牌設計庫服務來最佳化客戶端應用的大小。",
+          "tooltipCn": "透過使用輕量級注入令牌設計函式庫服務來最佳化客戶端應用的大小。",
           "tooltip": "Optimize client app size by designing library services with lightweight injection tokens."
         }
       ]

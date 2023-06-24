@@ -753,7 +753,7 @@
             "desc": "NGX Cookie Service is an Angular Library that can be used to read, set and delete browser cookies",
             "title": "NGX Cookie Service",
             "url": "https://github.com/stevermeister/ngx-cookie-service",
-            "descCn": "NGX Cookie 服務是一個 Angular 庫，可用於讀取、設定和刪除瀏覽器 Cookie",
+            "descCn": "NGX Cookie 服務是一個 Angular 函式庫，可用於讀取、設定和刪除瀏覽器 Cookie",
             "titleCn": "NGX Cookie 服務"
           }
         }
