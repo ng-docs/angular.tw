@@ -111,7 +111,7 @@
     "name": "Andrew Seguin",
     "picture": "andrewseguin.jpg",
     "website": "https://github.com/andrewseguin",
-    "bio": "Andrew is an engineer on the Angular Material team working on bringing material components to the world. When he’s not obsessing over pixels and design, he is probably off somewhere having adventures with his wife and daughters.",
+    "bio": "Andrew is an engineer on the Angular Material team working on bringing material components to the world. When he」s not obsessing over pixels and design, he is probably off somewhere having adventures with his wife and daughters.",
     "groups": [
       "Angular"
     ],
@@ -349,7 +349,7 @@
     "picture": "danwahlin.jpg",
     "twitter": "DanWahlin",
     "website": "https://codewithdan.com",
-    "bio": "Dan Wahlin founded Wahlin Consulting which provides consulting and onsite/online training services on Web technologies such as JavaScript, Angular, TypeScript, Node.js, C#, ASP.NET Core, Web API, and Docker. He’s also published many developer courses on Pluralsight.com and Udemy.com. Dan is a Google GDE, Docker Captain, and Microsoft MVP and Regional Director and speaks at conferences and user groups around the world.  Dan has written several books on Web technologies, hundreds of technical articles and blog posts (https://blog.codewithdan.com) and runs the 'Code with Dan Web Weekly Newsletter' - a great way to stay up on the latest technologies. Follow Dan on Twitter @DanWahlin.",
+    "bio": "Dan Wahlin founded Wahlin Consulting which provides consulting and onsite/online training services on Web technologies such as JavaScript, Angular, TypeScript, Node.js, C#, ASP.NET Core, Web API, and Docker. He」s also published many developer courses on Pluralsight.com and Udemy.com. Dan is a Google GDE, Docker Captain, and Microsoft MVP and Regional Director and speaks at conferences and user groups around the world.  Dan has written several books on Web technologies, hundreds of technical articles and blog posts (https://blog.codewithdan.com) and runs the 'Code with Dan Web Weekly Newsletter' - a great way to stay up on the latest technologies. Follow Dan on Twitter @DanWahlin.",
     "groups": [
       "GDE"
     ]
@@ -369,7 +369,7 @@
     "picture": "deborah.jpg",
     "twitter": "deborahkurata",
     "website": "https://blogs.msmvps.com/deborahk/",
-    "bio": "Deborah is a software developer, author, and Google Developer Expert. She is author of several Pluralsight courses including: 'Angular 2: Getting Started' and ‘Angular Routing’",
+    "bio": "Deborah is a software developer, author, and Google Developer Expert. She is author of several Pluralsight courses including: 'Angular 2: Getting Started' and 「Angular Routing」",
     "groups": [
       "GDE"
     ]
@@ -901,7 +901,7 @@
     "picture": "maximsalnikov.jpg",
     "twitter": "webmaxru",
     "website": "https://medium.com/@webmaxru",
-    "bio": "Oslo-based web front-end engineer, a Google Developer Expert in Angular, Web technologies and IoT. Active public speaker & trainer for the developer events. Leader of Norway’s largest meetups dedicated to web front-end and mobile development. Founder of ngVikings and Mobile Era conferences. Progressive Web Apps advocate.",
+    "bio": "Oslo-based web front-end engineer, a Google Developer Expert in Angular, Web technologies and IoT. Active public speaker & trainer for the developer events. Leader of Norway」s largest meetups dedicated to web front-end and mobile development. Founder of ngVikings and Mobile Era conferences. Progressive Web Apps advocate.",
     "groups": [
       "GDE"
     ]
@@ -960,7 +960,7 @@
     "picture": "nartc.jpg",
     "twitter": "Nartc1410",
     "website": "https://nartc.me",
-    "bio": "Chau works to bring the best engineering practices to web application production. He is the creator of AutoMapper TypeScript, @ngneat/tailwind for Angular, and a core member of NestJS. Also, he is one of Angular Vietnam’s founders. He blogs, lives stream, and maintains open-source projects.",
+    "bio": "Chau works to bring the best engineering practices to web application production. He is the creator of AutoMapper TypeScript, @ngneat/tailwind for Angular, and a core member of NestJS. Also, he is one of Angular Vietnam」s founders. He blogs, lives stream, and maintains open-source projects.",
     "groups": [
       "GDE"
     ]
@@ -998,7 +998,7 @@
     "name": "Pascal Precht",
     "picture": "pascalprecht.jpg",
     "website": "https://twitter.com/PascalPrecht",
-    "bio": "Pascal is a software engineer, author and Google Developer Expert for the Angular team. He loves contributing to open source and is the creator of the popular angular-translate module. In his spare time he’s fiddling with EDM production.",
+    "bio": "Pascal is a software engineer, author and Google Developer Expert for the Angular team. He loves contributing to open source and is the creator of the popular angular-translate module. In his spare time he」s fiddling with EDM production.",
     "groups": [
       "GDE"
     ]
@@ -1008,7 +1008,7 @@
     "picture": "craig-spence.jpg",
     "twitter": "phenomnominal",
     "website": "https://github.com/phenomnomnominal",
-    "bio": "Craig is a Software Engineer from New Zealand, working at Spotify in Stockholm. He loves building cool things that help teams build cool things! He also loves punk rock, Disney’s Frozen, and his cat Cosy.",
+    "bio": "Craig is a Software Engineer from New Zealand, working at Spotify in Stockholm. He loves building cool things that help teams build cool things! He also loves punk rock, Disney」s Frozen, and his cat Cosy.",
     "groups": [
       "GDE"
     ]
@@ -1285,7 +1285,7 @@
     "picture": "usergalileo.jpg",
     "twitter": "MicheleStieven",
     "website": "https://accademia.dev",
-    "bio": "Michele is an Angular GDE who’s always looking for technologies which allow people to create complex, dynamic and reactive applications. He helps teams of big and small companies with tools like Angular, RxJS, Redux and Web Components. He loves writing and making complex things easy, and he does so in his italian blog (https://accademia.dev) which also hosts his video courses. He’s taken part of many conferences, meetups and online events, and loves to help people in community groups. When he’s not working, he’s a musician.",
+    "bio": "Michele is an Angular GDE who」s always looking for technologies which allow people to create complex, dynamic and reactive applications. He helps teams of big and small companies with tools like Angular, RxJS, Redux and Web Components. He loves writing and making complex things easy, and he does so in his italian blog (https://accademia.dev) which also hosts his video courses. He」s taken part of many conferences, meetups and online events, and loves to help people in community groups. When he」s not working, he」s a musician.",
     "groups": [
       "GDE"
     ]
@@ -1315,7 +1315,7 @@
     "picture": "webdave.jpg",
     "twitter": "webdave_de",
     "website": "https://github.com/web-dave",
-    "bio": "David is an Angular consultant who offers support for your Angular applications and projects. He’s also a trainer at angular.de, angular-college and swissangular. He loves to speak and teach at meetups and conferences. David also writes his own blog and reviews upcoming books and articles. During leisure time he jumps arround with his 3 boys and his wife. He is an organizer of Angular Hamburg and ng-de.",
+    "bio": "David is an Angular consultant who offers support for your Angular applications and projects. He」s also a trainer at angular.de, angular-college and swissangular. He loves to speak and teach at meetups and conferences. David also writes his own blog and reviews upcoming books and articles. During leisure time he jumps arround with his 3 boys and his wife. He is an organizer of Angular Hamburg and ng-de.",
     "groups": [
       "GDE"
     ]
